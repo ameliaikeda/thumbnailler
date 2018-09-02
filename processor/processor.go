@@ -47,12 +47,14 @@ func Process(path string, info os.FileInfo, err error) error {
 	w, h := ratio(meta.Size, width, height)
 
 	b, err := img.Process(bimg.Options{
-		Width:   w,
-		Height:  h,
-		Type:    bimg.JPEG,
-		Quality: quality,
+		Width:         w,
+		Height:        h,
+		Type:          bimg.JPEG,
+		Quality:       quality,
+		StripMetadata: true,
 	})
 	if err != nil {
+		fmt.Fprintf(os.Stderr, "process failed: %s\n", path)
 		return err
 	}
 
