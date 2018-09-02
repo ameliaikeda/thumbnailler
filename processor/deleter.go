@@ -23,8 +23,6 @@ func Delete(path string, info os.FileInfo, err error) error {
 		return os.Remove(p)
 	}
 
-	fmt.Printf("skip  : %s\n", p)
-
 	return nil
 }
 
